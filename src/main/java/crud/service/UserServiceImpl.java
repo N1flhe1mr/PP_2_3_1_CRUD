@@ -1,27 +1,43 @@
 package crud.service;
 
 import crud.model.User;
+import crud.dao.UserDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-    @Override
-    public void create(User user) {
+    private final UserDAO userDAO;
 
+    @Autowired
+    public UserServiceImpl(UserDAO userDAO) {
+        this.userDAO = userDAO;
     }
 
     @Override
-    public void delete(User user) {
-
+    public void save(User user) {
+        userDAO.save(user);
     }
 
     @Override
     public void update(User user) {
-
+        userDAO.update(user);
     }
 
     @Override
-    public User findById(long id) {
-        return null;
+    public void deleteUserById(long id) {
+        userDAO.deleteUserById(id);
+    }
+
+    @Override
+    public User findUserById(long id) {
+        return userDAO.findUserById(id);
+    }
+
+    @Override
+    public List<User> getUsers() {
+        return userDAO.getUsers();
     }
 }

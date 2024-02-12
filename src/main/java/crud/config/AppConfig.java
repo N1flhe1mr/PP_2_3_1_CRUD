@@ -45,12 +45,10 @@ import java.util.Properties;
         public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
             LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
             em.setDataSource(getDataSource());
-            em.setPackagesToScan(new String[]{"hiber.model"});
-
+            em.setPackagesToScan(new String[]{"crud.model"});
             JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
             em.setJpaVendorAdapter(vendorAdapter);
             em.setJpaProperties(additionalProperties());
-
             return em;
         }
 
@@ -58,7 +56,6 @@ import java.util.Properties;
         public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
             JpaTransactionManager transactionManager = new JpaTransactionManager();
             transactionManager.setEntityManagerFactory(emf);
-
             return transactionManager;
         }
 
@@ -66,8 +63,6 @@ import java.util.Properties;
             Properties properties = new Properties();
             properties.setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
             properties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
-
             return properties;
         }
     }
-

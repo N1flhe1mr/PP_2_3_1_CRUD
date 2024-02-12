@@ -1,10 +1,10 @@
-package crud.service;
+package crud.dao;
 
 import crud.model.User;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserDAO {
     void save(User user);
 
     void update(User user);

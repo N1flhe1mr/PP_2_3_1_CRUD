@@ -22,6 +22,6 @@ public class User {
     @Column(name = "surname")
     private String surname;
 
-    @Column(name = "email")
-    private String email;
+    @Column(name = "age")
+    private byte age;
 }
